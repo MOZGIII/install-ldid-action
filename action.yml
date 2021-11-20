@@ -1,0 +1,20 @@
+name: Install ldid
+description: |
+  Download ldid from the ProcursusTeam/ldid latest Github Release
+  and make it available at `/usr/local/bin`.
+inputs:
+  repo:
+    description: Github repo to use
+    required: true
+    default: ProcursusTeam/ldid
+  tag:
+    description: Github Release Tag to use
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/install.sh
+      shell: bash
+      env:
+        REPO: ${{ inputs.repo }}
+        TAG: ${{ inputs.tag }}
